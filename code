@@ -1,0 +1,29 @@
+import os
+
+# specify the directory path where the files are located
+directory_path = "location of files"
+
+# specify the old name pattern
+old_name_pattern = "name"
+
+# specify the new name pattern
+new_name_pattern = "new name"
+
+# specify the starting number for the index
+index = 1
+
+# loop through all files in the directory
+for filename in os.listdir(directory_path):
+    if filename.startswith(old_name_pattern):
+        # construct the new filename with an increasing index
+        new_filename = f"{new_name_pattern}{index}.jpg"
+
+        # construct the full path of the file and the new file name
+        old_file_path = os.path.join(directory_path, filename)
+        new_file_path = os.path.join(directory_path, new_filename)
+
+        # rename the file
+        os.rename(old_file_path, new_file_path)
+
+        # increment the index
+        index += 1
